@@ -1,0 +1,32 @@
+{
+  "presets": ["env", "stage-0", "react"],
+  "env": {
+    "production": {
+      "plugins": [
+        [
+          "import",
+          {
+            "libraryName": "antd",
+            "libraryDirectory": "es",
+            "style": "css"
+          }
+        ],
+        "transform-decorators-legacy"
+      ]
+    },
+    "development": {
+      "plugins": [
+        [
+          "import",
+          {
+            "libraryName": "antd",
+            "libraryDirectory": "es",
+            "style": "css"
+          }
+        ],
+        "transform-decorators-legacy",
+        "react-hot-loader/babel"
+      ]
+    }
+  }
+}
