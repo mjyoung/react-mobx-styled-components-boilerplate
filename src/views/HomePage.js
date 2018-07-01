@@ -1,15 +1,18 @@
+// @flow
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Title = styled.h1`
-  color: ${props => props.theme.primary};
-`;
+type State = {
+  posts: Array<*>,
+};
 
-class HomePage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+class HomePage extends Component<{}, State> {
+  constructor() {
+    super();
+    this.state = {
+      posts: [],
+    };
   }
 
   componentWillMount() {
@@ -37,5 +40,8 @@ class HomePage extends Component {
   }
 }
 
-HomePage.propTypes = {};
+const Title = styled.h1`
+  color: ${props => props.theme.primary};
+`;
+
 export default HomePage;

@@ -7,15 +7,22 @@
     "email": "michaeljy@gmail.com"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --progress --colors --config webpack.config.dev.js",
     "build": "cross-env npm run clean && NODE_ENV=production webpack  --config webpack.config.prod.js --progress --profile",
     "build-with-stats": "cross-env npm run clean && NODE_ENV=production webpack  --config webpack.config.prod.js --progress --profile --json > build/stats.json",
     "analyze": "cross-env webpack-bundle-analyzer build/stats.json",
     "build-analyze": "cross-env npm run build-with-stats && npm run analyze",
     "clean": "cross-env rimraf ./build && mkdirp ./build",
     "eslint": "cross-env eslint .",
-    "eslint:fix": "cross-env eslint --fix ."
+    "eslint:fix": "cross-env eslint --fix .",
+    "flow": "cross-env flow check",
+    "prettier:staged": "cross-env pretty-quick --staged"
   },
+  "pre-commit": [
+    "prettier:staged",
+    "flow",
+    "eslint"
+  ],
   "keywords": [
     "react",
     "mobx",
@@ -53,11 +60,14 @@
     "eslint-plugin-import": "2.11.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.7.0",
+    "flow-bin": "^0.75.0",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.1",
     "mkdirp": "^0.5.1",
     "node-sass": "^4.9.0",
+    "pre-commit": "^1.2.2",
     "prettier": "^1.13.5",
+    "pretty-quick": "^1.6.0",
     "rimraf": "^2.6.2",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
