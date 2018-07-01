@@ -1,4 +1,4 @@
-import variables from './variables';
+import variables from './theme-variables';
 
 export default {
   ...variables,

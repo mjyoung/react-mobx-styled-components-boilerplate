@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
-import { Button, Icon } from 'antd';
+import { Button } from 'antd';
 
 @inject('TodoStore')
 @observer
