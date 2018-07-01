@@ -2,6 +2,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -48,5 +49,8 @@ module.exports = {
     ],
   },
 
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({ template: 'index.html', inject: true, hash: true }),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
 };

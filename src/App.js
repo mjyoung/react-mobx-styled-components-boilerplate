@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { HashRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'mobx-react';
+import { hot } from 'react-hot-loader';
+import './styles/app.css';
 
 import RootStore from './stores';
 
@@ -11,17 +13,19 @@ const stores = {
   TodoStore: RootStore.TodoStore,
 };
 
-export default class App extends Component {
+class App extends Component {
   render() {
     return (
       <Provider {...stores}>
-        <HashRouter>
+        <BrowserRouter>
           <div>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/todo" component={TodoPage} />
           </div>
-        </HashRouter>
+        </BrowserRouter>
       </Provider>
     );
   }
 }
+
+export default hot(module)(App);

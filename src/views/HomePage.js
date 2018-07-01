@@ -22,9 +22,11 @@ class HomePage extends Component {
   render() {
     return (
       <div className="">
-        This is home page... {this.state.posts && this.state.posts.length}
+        <h1>Home Page</h1>
+        Number of posts returned from fetch:{' '}
+        {this.state.posts && this.state.posts.length}
         <br />
-        <Link to="/todo">todo....</Link>
+        <Link to="/todo">Go to Todo list</Link>
       </div>
     );
   }
