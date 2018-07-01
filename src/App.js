@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'mobx-react';
 import { hot } from 'react-hot-loader';
-import './styles/app.css';
+import { injectGlobal, ThemeProvider } from 'styled-components';
+import baseStyles from './styles/_base';
+import theme from './styles/_theme';
 
 import RootStore from './stores';
 
@@ -16,16 +18,22 @@ const stores = {
 class App extends Component {
   render() {
     return (
-      <Provider {...stores}>
-        <BrowserRouter>
-          <div>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/todo" component={TodoPage} />
-          </div>
-        </BrowserRouter>
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <Provider {...stores}>
+          <BrowserRouter>
+            <div>
+              <Route exact path="/" component={HomePage} />
+              <Route exact path="/todo" component={TodoPage} />
+            </div>
+          </BrowserRouter>
+        </Provider>
+      </ThemeProvider>
     );
   }
 }
+
+injectGlobal`
+  ${baseStyles}
+`;
 
 export default hot(module)(App);

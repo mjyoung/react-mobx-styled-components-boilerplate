@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+const Title = styled.h1`
+  color: ${props => props.theme.primary};
+`;
 
 class HomePage extends Component {
   constructor(props) {
@@ -22,7 +27,7 @@ class HomePage extends Component {
   render() {
     return (
       <div className="">
-        <h1>Home Page</h1>
+        <Title>Home Page</Title>
         Number of posts returned from fetch:{' '}
         {this.state.posts && this.state.posts.length}
         <br />

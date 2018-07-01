@@ -40,6 +40,9 @@
         ]
       }
     ],
+    "no-unused-expressions": ["error", {
+      "allowTaggedTemplates": true
+    }],
     "object-curly-newline": 0,
     "react/prefer-stateless-function": 0,
     "react/jsx-filename-extension": 0
