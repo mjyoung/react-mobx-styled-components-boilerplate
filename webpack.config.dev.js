@@ -4,7 +4,6 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  devtool: 'source-map',
   entry: [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
@@ -12,11 +11,18 @@ module.exports = {
     './src/index',
   ],
   mode: 'development',
+  devtool: 'cheap-module-eval-source-map',
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     chunkFilename: '[name].chunk.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'build'),
     publicPath: '/',
+  },
+  devServer: {
+    host: 'localhost',
+    port: 8080,
+    historyApiFallback: true,
+    hot: true,
   },
   module: {
     rules: [
@@ -42,16 +48,5 @@ module.exports = {
     ],
   },
 
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-  ],
-
-  devServer: {
-    host: 'localhost',
-    port: 8080,
-    historyApiFallback: true,
-    hot: true,
-  },
+  plugins: [new webpack.HotModuleReplacementPlugin()],
 };
