@@ -5,12 +5,10 @@
 - React
 - React-Router-v4
 - MobX
+- react-loadable for lazy loading routes / components
 - styled-components
-- Flow types
-- eslint
-- Prettier
-
-## Todo
-
-- Implement [react-loadable](https://github.com/jamiebuilds/react-loadable) for routes / components.
-- Update precommit hook to only eslint and flow check staged files.
+- antd UI library
+- Linting / Code formatting:
+  - Flow types
+  - eslint
+  - Prettier
